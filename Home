@@ -1,0 +1,25 @@
+<div style="
+  background-image: url('https://drive.google.com/uc?export=view&id=1BDaYR1JKSifiXO4Om2uRRhScYx9SboWO');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+">
+  <div style="background-color: rgba(255, 255, 255, 0.6); padding: 40px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); text-align: center;">
+    <h1 style="font-family: 'Playfair Display', serif; font-weight: 800; color: #000;">Robin Benny</h1>
+    <h2 style="font-family: Arial, sans-serif; font-weight: bold; color: #555;">Global Business Development Leader</h2>
+  </div>
+</div>
+
+<div style="padding: 40px; font-family: Arial, sans-serif; color: #333;">
+  <!-- Your scrollable content here -->
+  <h3>About Me</h3>
+  <p>
+    With over 13 years of experience across 15+ countries, I bring strategic insights in business growth, operations, and international expansion...
+  </p>
+  <!-- Add more sections as needed -->
+</div>
