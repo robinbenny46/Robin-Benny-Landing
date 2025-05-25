@@ -1,128 +1,140 @@
-<!-- / Background section with headshot and animated zoom+blur on scroll --><div class="hero-section">
-  <div class="overlay">
-    <h1 class="name">Robin Benny</h1>
+<!-- / Head Section with Headshot Background --><div class="parallax-container">
+  <img src="https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png" alt="Robin Benny Headshot" class="parallax-image" />
+  <div class="overlay-box zoom-in">
+    <h1 class="header">Robin Benny</h1>
     <h2 class="tagline">Global Business Development Leader | 15+ Countries | 10+ Years Expertise</h2>
   </div>
-</div><!-- / About Me Section --><div class="content-box">
-  <h3 class="section-heading">About Me</h3>
-  <p class="normal-text">
-    With over 13 years of experience across 15+ countries, I bring strategic insights in business growth, operations, and international expansion. My approach combines analytical thinking, local market adaptability, and people-centric leadership to drive sustainable growth.
-  </p>
-</div><!-- / Contact Me Section with Call-to-Action Buttons --><div class="content-box">
-  <h3 class="section-heading">Contact Me</h3>
-  <div class="cta-container">
-    <a href="tel:+971564249461" class="cta-button">Mobile [UAE]</a>
-    <a href="tel:+919072376246" class="cta-button">Mobile [India]</a>
-    <a href="https://wa.me/919072376246" class="cta-button">WhatsApp</a>
-    <a href="mailto:robin.benny46@gmail.com" class="cta-button">Email</a>
-    <a href="https://www.linkedin.com/in/robinbenny46" class="cta-button">LinkedIn</a>
+</div><!-- / About Me Section --><div class="parallax-section">
+  <div class="overlay-box zoom-in">
+    <h3 class="section-title">About Me</h3>
+    <p class="section-text">
+      With over 13 years of experience across 15+ countries, I bring strategic insights in business growth, operations, and international expansion. My leadership has helped scale businesses while mentoring professionals across industries.
+    </p>
   </div>
-</div><!-- / Styles and Scripts --><style>
-  /* / General Reset and Base Styles */
-  body, html {
+</div><!-- / Contact Me Section --><div class="parallax-section">
+  <div class="overlay-box zoom-in">
+    <h3 class="section-title">Contact Me</h3>
+    <div class="cta-container">
+      <a class="cta-button" href="tel:+971564249461">Mobile [UAE]</a>
+      <a class="cta-button" href="tel:+919072376246">Mobile [India]</a>
+      <a class="cta-button" href="https://wa.me/919072376246">WhatsApp</a>
+      <a class="cta-button" href="mailto:robin.benny46@gmail.com">Email</a>
+      <a class="cta-button" href="https://www.linkedin.com/in/robinbenny46">LinkedIn</a>
+    </div>
+  </div>
+</div><!-- / CSS Styles --><style>
+  body {
     margin: 0;
-    padding: 0;
     font-family: Cambria, serif;
   }
 
-  /* / Hero Section with Background Image and Scroll Animation */
-  .hero-section {
-    height: 100vh;
-    background-image: url('https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .parallax-container {
     position: relative;
-    transition: transform 0.5s ease, filter 0.5s ease;
+    height: 100vh;
+    overflow: hidden;
   }
 
-  /* / Overlay Box with Name and Tagline */
-  .overlay {
+  .parallax-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease, filter 1s ease;
+    z-index: -1;
+  }
+
+  .parallax-section {
+    position: relative;
+    height: auto;
+    padding: 60px 20px;
+    background-color: transparent;
+  }
+
+  .overlay-box {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    text-align: center;
-    width: 90%;
     max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+    transition: transform 1s ease, filter 1s ease;
   }
 
-  .name {
+  .zoom-in {
+    transform: scale(0.95);
+    filter: blur(1px);
+  }
+
+  .header {
     font-family: 'EB Garamond', serif;
     font-weight: 800;
+    font-size: 2.8em;
+    margin: 0;
     color: #000;
-    font-size: 36px;
   }
 
   .tagline {
     font-family: Arial, sans-serif;
-    color: #000;
-    font-size: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
     margin-top: 10px;
   }
 
-  /* / Reusable Content Boxes */
-  .content-box {
-    background-color: rgba(255, 255, 255, 0.5);
-    margin: 40px 20px;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  .section-title {
     font-family: Georgia, serif;
-  }
-
-  .section-heading {
-    font-size: 24px;
+    font-size: 1.8em;
+    font-weight: bold;
     color: #000;
-    margin-bottom: 20px;
   }
 
-  .normal-text {
-    font-size: 16px;
+  .section-text {
+    font-family: Cambria, serif;
+    font-size: 1.1em;
     color: #333;
+    margin-top: 10px;
   }
 
-  /* / Call-to-Action Buttons */
   .cta-container {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     align-items: center;
-    gap: 15px;
+    margin-top: 20px;
   }
 
   .cta-button {
     background-color: #006dc8;
     color: white;
-    padding: 12px 24px;
     text-decoration: none;
-    border-radius: 25px;
+    padding: 12px 24px;
+    border-radius: 30px;
     font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background 0.3s;
   }
 
-  /* / Responsive Adjustments */
-  @media (min-width: 768px) {
-    .cta-container {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .cta-button:hover {
+    background-color: #005bb5;
   }
-</style><!-- / JavaScript for Scroll Effect on Background --><script>
+
+  /* / Scroll effect to animate background image and overlay text */
   window.addEventListener('scroll', function () {
-    const hero = document.querySelector('.hero-section');
-    const scrolled = window.scrollY;
-    const scale = 1 + scrolled / 1000;
-    const blur = Math.min(scrolled / 100, 5);
+    const scrollY = window.scrollY;
+    const image = document.querySelector('.parallax-image');
+    const overlays = document.querySelectorAll('.zoom-in');
 
-    hero.style.transform = `scale(${scale})`;
-    hero.style.filter = `blur(${blur}px)`;
+    // Headshot zoom-out and blur more with scroll
+    image.style.transform = `scale(${1 + scrollY * -0.0005})`;
+    image.style.filter = `blur(${Math.min(scrollY * 0.01, 5)}px)`;
+
+    // Text and overlays zoom-in and sharpen
+    overlays.forEach(overlay => {
+      overlay.style.transform = `scale(${1 + scrollY * 0.0005})`;
+      overlay.style.filter = `blur(${Math.max(1 - scrollY * 0.01, 0)}px)`;
+    });
   });
-</script>
+</style>
