@@ -4,46 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Robin Benny</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap" rel="stylesheet">
   <style>
     body, html {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      color: #333;
     }
 
     .hero {
-      background-image: url('https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background: url('https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png') center/cover no-repeat fixed;
       height: 100vh;
       display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       align-items: center;
-      justify-content: center;
       text-align: center;
     }
 
-    .overlay {
+    .overlay-box {
       background-color: rgba(255, 255, 255, 0.6);
       padding: 30px;
+      width: 90%;
+      max-width: 600px;
+      margin-bottom: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      max-width: 90%;
     }
 
-    .overlay h1 {
+    .overlay-box h1 {
       font-family: 'Playfair Display', serif;
       font-weight: 800;
       color: #000;
-      font-size: 2.5em;
-      margin: 0 0 10px;
+      margin: 0;
+    }
+
+    .overlay-box h2 {
+      font-weight: bold;
+      color: #555;
+      margin: 10px 0 0;
+      font-size: 18px;
     }
 
     .content {
       padding: 40px 20px;
-      background-color: #fff;
+      background-color: #f9f9f9;
+    }
+
+    .content h3 {
+      color: #333;
     }
 
     .contact-section {
@@ -52,50 +61,66 @@
       background-color: #fff;
     }
 
-    .contact-section h2 {
+    .contact-section h3 {
       color: #000;
       margin-bottom: 20px;
     }
 
     .cta-button {
       display: block;
+      margin: 10px auto;
+      padding: 12px 20px;
       background-color: #006dc8;
       color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
       text-decoration: none;
-      padding: 12px 20px;
-      margin: 10px auto;
-      border-radius: 30px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 90%;
       max-width: 300px;
-      font-weight: bold;
+      transition: background-color 0.3s ease;
     }
 
-    @media (max-width: 600px) {
-      .overlay h1 {
-        font-size: 2em;
+    .cta-button:hover {
+      background-color: #005bb5;
+    }
+
+    @media (min-width: 768px) {
+      .cta-button {
+        display: inline-block;
+        margin: 10px 10px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Hero Section -->
   <div class="hero">
-    <div class="overlay">
+    <div class="overlay-box">
       <h1>Robin Benny</h1>
-      <h2 style="color: #555; font-weight: bold;">
-        Global Business Development Leader | 15+ Countries | 10+ Years Expertise
-      </h2>
+      <h2>Global Business Development Leader | 15+ Countries | 10+ Years Expertise</h2>
     </div>
   </div>
-  
-  <div class="contact-section">
-    <h2>Contact Me</h2>
 
-    <a href="tel:+971564249461" class="cta-button">Call Mobile [UAE]</a>
-    <a href="tel:+919072376246" class="cta-button">Call Mobile [India]</a>
-    <a href="https://wa.me/919072376246" target="_blank" class="cta-button">Chat on WhatsApp</a>
-    <a href="mailto:robin.benny46@gmail.com" class="cta-button">Send Email</a>
-    <a href="https://www.linkedin.com/in/robinbenny46" target="_blank" class="cta-button">Connect on LinkedIn</a>
+  <!-- Content Section -->
+  <div class="content">
+    <h3>About Me</h3>
+    <p>
+      With over 13 years of experience across 15+ countries, I bring strategic insights in business growth,
+      operations, and international expansion, helping organizations drive measurable impact and sustainable success.
+    </p>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <h3>Contact Me</h3>
+    <a href="tel:+971564249461" class="cta-button">Mobile [UAE]</a>
+    <a href="tel:+919072376246" class="cta-button">Mobile [India]</a>
+    <a href="https://wa.me/919072376246" class="cta-button" target="_blank">WhatsApp</a>
+    <a href="mailto:robin.benny46@gmail.com" class="cta-button">Email</a>
+    <a href="https://www.linkedin.com/in/robinbenny46" class="cta-button" target="_blank">LinkedIn</a>
   </div>
 
 </body>
