@@ -1,140 +1,187 @@
-<!-- / Head Section with Headshot Background --><div class="parallax-container">
-  <img src="https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png" alt="Robin Benny Headshot" class="parallax-image" />
-  <div class="overlay-box zoom-in">
-    <h1 class="header">Robin Benny</h1>
-    <h2 class="tagline">Global Business Development Leader | 15+ Countries | 10+ Years Expertise</h2>
-  </div>
-</div><!-- / About Me Section --><div class="parallax-section">
-  <div class="overlay-box zoom-in">
-    <h3 class="section-title">About Me</h3>
-    <p class="section-text">
-      With over 13 years of experience across 15+ countries, I bring strategic insights in business growth, operations, and international expansion. My leadership has helped scale businesses while mentoring professionals across industries.
-    </p>
-  </div>
-</div><!-- / Contact Me Section --><div class="parallax-section">
-  <div class="overlay-box zoom-in">
-    <h3 class="section-title">Contact Me</h3>
-    <div class="cta-container">
-      <a class="cta-button" href="tel:+971564249461">Mobile [UAE]</a>
-      <a class="cta-button" href="tel:+919072376246">Mobile [India]</a>
-      <a class="cta-button" href="https://wa.me/919072376246">WhatsApp</a>
-      <a class="cta-button" href="mailto:robin.benny46@gmail.com">Email</a>
-      <a class="cta-button" href="https://www.linkedin.com/in/robinbenny46">LinkedIn</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Robin Benny</title>
+  <!-- Importing Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&family=Georgia&family=Cambria&display=swap" rel="stylesheet">
+
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Cambria', serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Container with background image */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background-image: url('https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    /* Overlay to dim background and hold all content */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+    }
+
+    /* Each box (Robin Benny, About Me, Contact Me) */
+    .content-box {
+      background-color: rgba(255, 255, 255, 0.5); /* 50% transparent */
+      padding: 30px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 800px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    /* Header Text */
+    .name {
+      font-family: 'EB Garamond', serif;
+      font-weight: 800;
+      font-size: 2.5em;
+      color: #000;
+      text-align: center;
+    }
+
+    .tagline {
+      font-family: Arial, sans-serif;
+      color: #333;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Section Headings */
+    h3 {
+      font-family: Georgia, serif;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    /* CTA Buttons */
+    .cta-button {
+      background-color: #006dc8;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin: 8px 0;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      width: 100%;
+      max-width: 300px;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #0055a4;
+    }
+
+    /* Center buttons */
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Scroll-based animation */
+    .zoom-out {
+      transform: scale(1);
+      filter: blur(0px);
+    }
+
+    .scrolled .zoom-out {
+      transform: scale(1.2);
+      filter: blur(5px);
+    }
+
+    .zoom-in {
+      transform: scale(0.9);
+      filter: blur(5px);
+    }
+
+    .scrolled .zoom-in {
+      transform: scale(1);
+      filter: blur(0px);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .name {
+        font-size: 2em;
+      }
+      .tagline {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Image Section -->
+  <div class="hero zoom-out" id="hero">
+    <!-- Overlay for All Content Boxes -->
+    <div class="overlay">
+
+      <!-- Robin Benny Section -->
+      <div class="content-box zoom-in">
+        <h1 class="name">Robin Benny</h1>
+        <p class="tagline">Global Business Development Leader | 15+ Countries | 10+ Years Expertise</p>
+      </div>
+
+      <!-- About Me Section -->
+      <div class="content-box zoom-in">
+        <h3>About Me</h3>
+        <p>
+          With over 13 years of experience across 15+ countries, I bring strategic insights in business growth, operations, and international expansion. My career spans leadership in emerging markets, training 20,000+ professionals, and working with 4 major international clients to drive 19% revenue growth.
+        </p>
+      </div>
+
+      <!-- Contact Me Section -->
+      <div class="content-box zoom-in">
+        <h3 style="color: #000;">Contact Me</h3>
+        <div class="cta-container">
+          <a href="tel:+971564249461"><button class="cta-button">Mobile [UAE]</button></a>
+          <a href="tel:+919072376246"><button class="cta-button">Mobile [India]</button></a>
+          <a href="https://wa.me/919072376246" target="_blank"><button class="cta-button">WhatsApp</button></a>
+          <a href="mailto:robin.benny46@gmail.com"><button class="cta-button">Email</button></a>
+          <a href="https://www.linkedin.com/in/robinbenny46" target="_blank"><button class="cta-button">LinkedIn</button></a>
+        </div>
+      </div>
+
     </div>
   </div>
-</div><!-- / CSS Styles --><style>
-  body {
-    margin: 0;
-    font-family: Cambria, serif;
-  }
 
-  .parallax-container {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .parallax-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 1s ease, filter 1s ease;
-    z-index: -1;
-  }
-
-  .parallax-section {
-    position: relative;
-    height: auto;
-    padding: 60px 20px;
-    background-color: transparent;
-  }
-
-  .overlay-box {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    max-width: 800px;
-    margin: 40px auto;
-    text-align: center;
-    transition: transform 1s ease, filter 1s ease;
-  }
-
-  .zoom-in {
-    transform: scale(0.95);
-    filter: blur(1px);
-  }
-
-  .header {
-    font-family: 'EB Garamond', serif;
-    font-weight: 800;
-    font-size: 2.8em;
-    margin: 0;
-    color: #000;
-  }
-
-  .tagline {
-    font-family: Arial, sans-serif;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #555;
-    margin-top: 10px;
-  }
-
-  .section-title {
-    font-family: Georgia, serif;
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #000;
-  }
-
-  .section-text {
-    font-family: Cambria, serif;
-    font-size: 1.1em;
-    color: #333;
-    margin-top: 10px;
-  }
-
-  .cta-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    margin-top: 20px;
-  }
-
-  .cta-button {
-    background-color: #006dc8;
-    color: white;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: background 0.3s;
-  }
-
-  .cta-button:hover {
-    background-color: #005bb5;
-  }
-
-  /* / Scroll effect to animate background image and overlay text */
-  window.addEventListener('scroll', function () {
-    const scrollY = window.scrollY;
-    const image = document.querySelector('.parallax-image');
-    const overlays = document.querySelectorAll('.zoom-in');
-
-    // Headshot zoom-out and blur more with scroll
-    image.style.transform = `scale(${1 + scrollY * -0.0005})`;
-    image.style.filter = `blur(${Math.min(scrollY * 0.01, 5)}px)`;
-
-    // Text and overlays zoom-in and sharpen
-    overlays.forEach(overlay => {
-      overlay.style.transform = `scale(${1 + scrollY * 0.0005})`;
-      overlay.style.filter = `blur(${Math.max(1 - scrollY * 0.01, 0)}px)`;
+  <!-- Script for scroll animations -->
+  <script>
+    window.addEventListener('scroll', () => {
+      document.body.classList.add('scrolled');
     });
-  });
-</style>
+  </script>
+
+</body>
+</html>
