@@ -1,126 +1,128 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robin Benny</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&display=swap" rel="stylesheet">
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: Cambria, serif;
-      scroll-behavior: smooth;
-    }.hero {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
+<!-- / Background section with headshot and animated zoom+blur on scroll --><div class="hero-section">
+  <div class="overlay">
+    <h1 class="name">Robin Benny</h1>
+    <h2 class="tagline">Global Business Development Leader | 15+ Countries | 10+ Years Expertise</h2>
+  </div>
+</div><!-- / About Me Section --><div class="content-box">
+  <h3 class="section-heading">About Me</h3>
+  <p class="normal-text">
+    With over 13 years of experience across 15+ countries, I bring strategic insights in business growth, operations, and international expansion. My approach combines analytical thinking, local market adaptability, and people-centric leadership to drive sustainable growth.
+  </p>
+</div><!-- / Contact Me Section with Call-to-Action Buttons --><div class="content-box">
+  <h3 class="section-heading">Contact Me</h3>
+  <div class="cta-container">
+    <a href="tel:+971564249461" class="cta-button">Mobile [UAE]</a>
+    <a href="tel:+919072376246" class="cta-button">Mobile [India]</a>
+    <a href="https://wa.me/919072376246" class="cta-button">WhatsApp</a>
+    <a href="mailto:robin.benny46@gmail.com" class="cta-button">Email</a>
+    <a href="https://www.linkedin.com/in/robinbenny46" class="cta-button">LinkedIn</a>
+  </div>
+</div><!-- / Styles and Scripts --><style>
+  /* / General Reset and Base Styles */
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, serif;
+  }
 
-.hero::before {
-  content: "";
-  background: url('https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png') no-repeat center center;
-  background-size: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transform: scale(1);
-  filter: blur(0px);
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
+  /* / Hero Section with Background Image and Scroll Animation */
+  .hero-section {
+    height: 100vh;
+    background-image: url('https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
 
-.overlay-box {
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 40px;
-  margin: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  text-align: center;
-}
+  /* / Overlay Box with Name and Tagline */
+  .overlay {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+  }
 
-.header {
-  font-family: 'EB Garamond', serif;
-  font-weight: 800;
-  font-size: 36px;
-  color: #000;
-}
+  .name {
+    font-family: 'EB Garamond', serif;
+    font-weight: 800;
+    color: #000;
+    font-size: 36px;
+  }
 
-.tagline {
-  font-family: Arial, sans-serif;
-  font-size: 18px;
-  color: #000;
-}
+  .tagline {
+    font-family: Arial, sans-serif;
+    color: #000;
+    font-size: 20px;
+    margin-top: 10px;
+  }
 
-.section-title {
-  font-family: Georgia, serif;
-  font-size: 24px;
-  color: #000;
-}
+  /* / Reusable Content Boxes */
+  .content-box {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 40px 20px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    font-family: Georgia, serif;
+  }
 
-.cta-button {
-  background-color: #006dc8;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin: 10px 0;
-  border-radius: 30px;
-  cursor: pointer;
-  width: 100%;
-  max-width: 300px;
-  font-size: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
+  .section-heading {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 20px;
+  }
 
-.cta-button:hover {
-  opacity: 0.9;
-}
+  .normal-text {
+    font-size: 16px;
+    color: #333;
+  }
 
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
+  /* / Call-to-Action Buttons */
+  .cta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 
-@media (min-width: 768px) {
   .cta-button {
-    width: auto;
+    background-color: #006dc8;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
   }
-  .overlay-box {
-    width: 60%;
+
+  /* / Responsive Adjustments */
+  @media (min-width: 768px) {
+    .cta-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
-}
+</style><!-- / JavaScript for Scroll Effect on Background --><script>
+  window.addEventListener('scroll', function () {
+    const hero = document.querySelector('.hero-section');
+    const scrolled = window.scrollY;
+    const scale = 1 + scrolled / 1000;
+    const blur = Math.min(scrolled / 100, 5);
 
-  </style>
-</head>
-<body>
-  <div class="hero" id="hero">
-    <div class="overlay-box">
-      <div class="header">Robin Benny</div>
-      <div class="tagline">Global Business Development Leader | 15+ Countries | 10+ Years Expertise</div>
-    </div>
-  </div>  <div class="content-wrapper">
-    <div class="overlay-box">
-      <div class="section-title">About Me</div>
-      <p>With over 13 years of experience across 15+ countries, I bring strategic insights in business growth, operations, and international expansion...</p>
-    </div><div class="overlay-box">
-  <div class="section-title">Contact Me</div>
-  <button class="cta-button" onclick="location.href='tel:+971564249461'">Mobile [UAE]</button>
-  <button class="cta-button" onclick="location.href='tel:+919072376246'">Mobile [India]</button>
-  <button class="cta-button" onclick="location.href='https://wa.me/919072376246'">WhatsApp</button>
-  <button class="cta-button" onclick="location.href='mailto:robin.benny46@gmail.com'">Email</button>
-  <button class="cta-button" onclick="location.href='https://www.linkedin.com/in/robinbenny46'">LinkedIn</button>
-</div>
-
-  </div>  <script>
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      const heroBg = document.querySelector('.hero::before');
-      document.querySelector('.hero').style.setProperty('--scale', 1 + scrolled / 2000);
-      document.querySelector('.hero').style.setProperty('--blur', Math.min(scrolled / 100, 5) + 'px');
-      document.styleSheets[0].insertRule(`.hero::before { transform: scale(${1 + scrolled / 2000}); filter: blur(${Math.min(scrolled / 100, 5)}px); }`, 0);
-    });
-  </script></body>
-</html>
+    hero.style.transform = `scale(${scale})`;
+    hero.style.filter = `blur(${blur}px)`;
+  });
+</script>
