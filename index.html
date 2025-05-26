@@ -13,6 +13,7 @@
       --cta-whatsapp: #25D366;
       --cta-linkedin: #0077B5;
       --cta-email: #D93025;
+      --transition: cubic-bezier(.4,0,.2,1);
     }
     html, body {
       height: 100%;
@@ -34,20 +35,18 @@
       top: 0; left: 0; width: 100vw; height: 100vh;
       background: url('https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png') center center/cover no-repeat;
       z-index: 0;
-      transition: filter 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+      transition: filter 0.9s var(--transition), transform 0.9s var(--transition);
       will-change: filter, transform;
     }
     /* Carousel Container */
     .carousel {
-      position: relative;
+      position: fixed;
       width: 100vw;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
       z-index: 2;
-      overflow: hidden;
       pointer-events: none;
     }
     .carousel-box {
@@ -61,40 +60,36 @@
       text-align: center;
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
-      transition: 
-        filter 0.8s cubic-bezier(.4,0,.2,1), 
-        transform 0.8s cubic-bezier(.4,0,.2,1),
-        opacity 0.8s cubic-bezier(.4,0,.2,1);
-      will-change: filter, transform, opacity;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
       opacity: 0;
+      filter: blur(8px);
+      transition: 
+        filter 0.9s var(--transition), 
+        transform 0.9s var(--transition),
+        opacity 0.9s var(--transition);
+      will-change: filter, transform, opacity;
       pointer-events: none;
     }
-    /* Box states */
     .carousel-box.active {
       opacity: 1;
       filter: blur(0px);
       z-index: 10;
       pointer-events: all;
-      transform: translateX(-50%) scale(1.06);
+      transform: translate(-50%, -50%) scale(1.06);
     }
-    .carousel-box.prev, .carousel-box.next {
-      opacity: 0.7;
-      filter: blur(4px);
-      z-index: 5;
-      pointer-events: none;
-      transform: translateX(-50%) scale(0.92);
-    }
-    .carousel-box.offscreen {
+    .carousel-box.up {
       opacity: 0;
+      filter: blur(8px);
+      transform: translate(-50%, -120%) scale(0.92);
       z-index: 1;
-      pointer-events: none;
-      transform: translateX(-50%) scale(0.8);
     }
-    /* Box positions */
-    .carousel-box.box-1 { bottom: 5%; }
-    .carousel-box.box-2 { bottom: 50%; transform: translate(-50%, 50%); }
-    .carousel-box.box-3 { bottom: 5%; }
+    .carousel-box.down {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translate(-50%, 20%) scale(0.92);
+      z-index: 1;
+    }
     /* Responsive */
     @media (max-width: 600px) {
       .carousel-box {
@@ -171,49 +166,25 @@
     /* Blur/Unblur Text */
     .blurred { filter: blur(4px); transition: filter 0.8s;}
     .unblurred { filter: blur(0px); transition: filter 0.8s;}
-    /* Carousel Nav */
-    .carousel-nav {
-      position: fixed;
-      right: 2vw;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-    }
-    .carousel-dot {
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      background: #fff;
-      opacity: 0.5;
-      border: 2px solid #4285F4;
-      cursor: pointer;
-      transition: opacity 0.3s;
-    }
-    .carousel-dot.active {
-      opacity: 1;
-      background: #4285F4;
-    }
   </style>
 </head>
 <body>
   <div class="headshot-bg" id="headshot"></div>
   <div class="carousel" id="carousel">
     <!-- Box 1 -->
-    <div class="carousel-box box-1 active" id="box1">
+    <div class="carousel-box active" id="box1">
       <div class="title unblurred">Robin Benny</div>
       <div class="tag unblurred">Global Business Development Leader | 15+ Countries | 10+ Years Expertise</div>
     </div>
     <!-- Box 2 -->
-    <div class="carousel-box box-2 offscreen" id="box2">
+    <div class="carousel-box down" id="box2">
       <div class="section-title unblurred">About Me</div>
       <div class="about-text unblurred">
         With over 13 years of experience across 15+ countries, I bring strategic insights in business growth, operations, and international expansion. My leadership has driven cross-functional success across new markets and key client acquisitions.
       </div>
     </div>
     <!-- Box 3 -->
-    <div class="carousel-box box-3 offscreen" id="box3">
+    <div class="carousel-box down" id="box3">
       <div class="section-title unblurred">Get In Touch</div>
       <div class="contact-text unblurred">
         <div class="cta-group">
@@ -226,12 +197,6 @@
       </div>
     </div>
   </div>
-  <!-- Carousel Navigation Dots -->
-  <div class="carousel-nav">
-    <div class="carousel-dot active" data-index="0"></div>
-    <div class="carousel-dot" data-index="1"></div>
-    <div class="carousel-dot" data-index="2"></div>
-  </div>
   <script>
     // Carousel State
     const boxes = [
@@ -240,30 +205,24 @@
       document.getElementById('box3')
     ];
     const headshot = document.getElementById('headshot');
-    const dots = document.querySelectorAll('.carousel-dot');
     let current = 0;
     // Helper
     function setBoxState(idx) {
       boxes.forEach((box, i) => {
-        box.classList.remove('active', 'prev', 'next', 'offscreen');
+        box.classList.remove('active', 'up', 'down');
         if (i === idx) {
           box.classList.add('active');
           // Unblur text
           box.querySelectorAll('.unblurred').forEach(e=>e.classList.remove('blurred'));
-        } else if (i === idx - 1) {
-          box.classList.add('prev');
+        } else if (i < idx) {
+          box.classList.add('up');
           // Blur text
           box.querySelectorAll('.unblurred').forEach(e=>e.classList.add('blurred'));
-        } else if (i === idx + 1) {
-          box.classList.add('next');
-          box.querySelectorAll('.unblurred').forEach(e=>e.classList.add('blurred'));
-        } else {
-          box.classList.add('offscreen');
+        } else if (i > idx) {
+          box.classList.add('down');
           box.querySelectorAll('.unblurred').forEach(e=>e.classList.add('blurred'));
         }
       });
-      // Dots
-      dots.forEach((dot,i)=>dot.classList.toggle('active', i===idx));
       // Headshot Parallax/Zoom/Blur
       if (idx === 0) {
         headshot.style.filter = "blur(0px) brightness(1)";
@@ -289,17 +248,13 @@
       if (scrollTimeout) return;
       if (e.deltaY > 0) goTo(Math.min(current+1,2));
       else goTo(Math.max(current-1,0));
-      scrollTimeout = setTimeout(()=>scrollTimeout=null, 800);
+      scrollTimeout = setTimeout(()=>scrollTimeout=null, 950);
     }
     window.addEventListener('wheel', handleWheel, {passive:false});
     // Keyboard Navigation
     window.addEventListener('keydown', e => {
       if (e.key === 'ArrowDown' || e.key === 'PageDown') goTo(Math.min(current+1,2));
       if (e.key === 'ArrowUp' || e.key === 'PageUp') goTo(Math.max(current-1,0));
-    });
-    // Dot Navigation
-    dots.forEach(dot=>{
-      dot.addEventListener('click', ()=>goTo(Number(dot.dataset.index)));
     });
     // Swipe (mobile)
     let touchStartY = null;
