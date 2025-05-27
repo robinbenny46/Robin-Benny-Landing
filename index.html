@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Robin Benny - Global Business Leader</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&family=Georgia&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&family=Georgia&display=swap" rel="stylesheet">
   <style>
     :root {
       --box-bg: rgba(255,255,255,0.5);
@@ -15,9 +16,12 @@
       --transition: cubic-bezier(.4,0,.2,1);
     }
     html, body {
-      margin: 0; padding: 0; height: 100%; overflow: hidden;
+      height: 100%;
+      margin: 0;
+      padding: 0;
       font-family: Cambria, serif;
       background: #fff;
+      overflow: hidden;
     }
     .headshot-bg {
       position: fixed;
@@ -54,33 +58,34 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
     }
-    /* Box 1 anchored bottom by default */
+    /* Box 1: anchored to bottom, always fully visible */
     #box1 {
       bottom: 0;
-      transform: translateY(0) scale(0.95);
-      justify-content: flex-end;
+      left: 0;
+      max-height: 100vh;
+      overflow-y: auto;
+      transform: translateY(0) scale(1.06);
+      z-index: 10;
     }
-    /* Box 1 shifted up if too tall */
-    #box1.shift-up {
-      bottom: auto;
-      top: 0;
-      justify-content: flex-start;
-    }
-    /* Other boxes vertically centered */
+    /* Box 2 and 3: centered vertically */
     #box2, #box3 {
       top: 50%;
+      left: 0;
       transform: translateY(-50%) scale(0.95);
       justify-content: center;
+      z-index: 10;
+      max-height: 90vh;
+      overflow-y: auto;
     }
+    /* Carousel states */
     .carousel-box.active {
       opacity: 1;
       filter: blur(0);
       pointer-events: all;
       z-index: 10;
-    }
-    #box2.active, #box3.active {
-      transform: translateY(-50%) scale(1.06);
     }
     .carousel-box.up {
       opacity: 0;
@@ -131,6 +136,7 @@
       color: #000;
       margin-bottom: 1.2em;
     }
+    /* CTA Buttons */
     .cta-group {
       display: flex;
       flex-wrap: wrap;
@@ -144,17 +150,19 @@
       font-size: 1rem;
       color: #fff;
       border: none;
-      border-radius: 24px;
+      border-radius: 24px 24px 24px 24px / 48px 48px 48px 48px;
       padding: 0.7em 1.3em;
+      margin: 0.2em 0;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0,0,0,0.10);
       transition: transform 0.1s, box-shadow 0.1s;
       outline: none;
-      min-width: 120px;
+      min-width: 140px;
       user-select: none;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 0.5em;
     }
     .cta-btn:active {
       transform: scale(0.95);
@@ -165,18 +173,9 @@
     .cta-whatsapp { background: var(--cta-whatsapp);}
     .cta-linkedin { background: var(--cta-linkedin);}
     .cta-email { background: var(--cta-email);}
-    @media (max-width: 600px) {
-      .cta-group {
-        flex-direction: column;
-        gap: 0.4em;
-        align-items: center;
-      }
-      .cta-btn {
-        width: 90%;
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+    @media (max-width: 900px) {
+      .cta-group { flex-direction: column; gap: 0.4em; align-items: center; }
+      .cta-btn { width: 90%; max-width: 320px; margin-left: auto; margin-right: auto; }
     }
     .blurred { filter: blur(4px); transition: filter 0.8s;}
     .unblurred { filter: blur(0); transition: filter 0.8s;}
@@ -185,12 +184,14 @@
 <body>
   <div class="headshot-bg" id="headshot"></div>
   <div class="carousel" id="carousel">
+    <!-- Box 1 -->
     <div class="carousel-box active" id="box1">
       <div>
         <div class="title unblurred">Robin Benny</div>
         <div class="tag unblurred">Global Business Development Leader | 15+ Countries | 10+ Years Expertise</div>
       </div>
     </div>
+    <!-- Box 2 -->
     <div class="carousel-box down" id="box2">
       <div>
         <div class="section-title unblurred">About Me</div>
@@ -199,16 +200,33 @@
         </div>
       </div>
     </div>
+    <!-- Box 3 -->
     <div class="carousel-box down" id="box3">
       <div>
         <div class="section-title unblurred">Get In Touch</div>
         <div class="contact-text unblurred">
           <div class="cta-group">
-            <a class="cta-btn cta-uae" href="tel:+971564249461">Mobile [UAE]</a>
-            <a class="cta-btn cta-india" href="tel:+97156424946">Mobile [India]</a>
-            <a class="cta-btn cta-whatsapp" href="https://wa.me/919072376246" target="_blank">Whatsapp</a>
-            <a class="cta-btn cta-linkedin" href="https://www.linkedin.com/in/robinbenny46" target="_blank">LinkedIn</a>
-            <a class="cta-btn cta-email" href="mailto:robin.benny46@gmail.com">Email</a>
+            <a class="cta-btn cta-uae" href="tel:+971564249461">
+              <!-- Mobile Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="#000000" d="M20.47,9a1,1,0,1,0-1-1A1,1,0,0,0,20.47,9Zm-3,0a1,1,0,1,0-1-1A1,1,0,0,0,17.47,9Zm-3,0a1,1,0,1,0-1-1A1,1,0,0,0,14.47,9ZM18.91,13c-.22,0-.45-.07-.67-.12a9.44,9.44,0,0,1-1.31-.39,2,2,0,0,0-2.48,1l-.22.45a12.48,12.48,0,0,1-2.67-2,12.83,12.83,0,0,1-2-2.66L10,9a2,2,0,0,0,1-2.48,10.33,10.33,0,0,1-.39-1.31c-.05-.23-.09-.45-.12-.68a3,3,0,0,0-3-2.49h-3a3,3,0,0,0-2.24,1,3,3,0,0,0-.73,2.39A19,19,0,0,0,18,21.91a2.56,2.56,0,0,0,.39,0,3,3,0,0,0,3-3v-3A3,3,0,0,0,18.91,13Zm.49,6a1,1,0,0,1-1.15,1,17.12,17.12,0,0,1-9.87-4.85A17.14,17.14,0,0,1,3.54,5.22a1,1,0,0,1,.25-.82,1,1,0,0,1,.74-.34h3a1,1,0,0,1,1,.79q.06.41.15.81a11.12,11.12,0,0,0,.46,1.55l-1.4.65a1,1,0,0,0-.49,1.33,14.49,14.49,0,0,0,7,7,1,1,0,0,0,.76,0,1,1,0,0,0,.56-.52l.63-1.4a13.69,13.69,0,0,0,1.58.46c.26.06.54.11.81.15a1,1,0,0,1,.78,1Z"></path></svg>
+              Mobile [UAE]
+            </a>
+            <a class="cta-btn cta-india" href="tel:+97156424946">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="#000000" d="M20.47,9a1,1,0,1,0-1-1A1,1,0,0,0,20.47,9Zm-3,0a1,1,0,1,0-1-1A1,1,0,0,0,17.47,9Zm-3,0a1,1,0,1,0-1-1A1,1,0,0,0,14.47,9ZM18.91,13c-.22,0-.45-.07-.67-.12a9.44,9.44,0,0,1-1.31-.39,2,2,0,0,0-2.48,1l-.22.45a12.48,12.48,0,0,1-2.67-2,12.83,12.83,0,0,1-2-2.66L10,9a2,2,0,0,0,1-2.48,10.33,10.33,0,0,1-.39-1.31c-.05-.23-.09-.45-.12-.68a3,3,0,0,0-3-2.49h-3a3,3,0,0,0-2.24,1,3,3,0,0,0-.73,2.39A19,19,0,0,0,18,21.91a2.56,2.56,0,0,0,.39,0,3,3,0,0,0,3-3v-3A3,3,0,0,0,18.91,13Zm.49,6a1,1,0,0,1-1.15,1,17.12,17.12,0,0,1-9.87-4.85A17.14,17.14,0,0,1,3.54,5.22a1,1,0,0,1,.25-.82,1,1,0,0,1,.74-.34h3a1,1,0,0,1,1,.79q.06.41.15.81a11.12,11.12,0,0,0,.46,1.55l-1.4.65a1,1,0,0,0-.49,1.33,14.49,14.49,0,0,0,7,7,1,1,0,0,0,.76,0,1,1,0,0,0,.56-.52l.63-1.4a13.69,13.69,0,0,0,1.58.46c.26.06.54.11.81.15a1,1,0,0,1,.78,1Z"></path></svg>
+              Mobile [India]
+            </a>
+            <a class="cta-btn cta-whatsapp" href="https://wa.me/919072376246" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="#000000" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.2-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.1.1-.3 0-.4-.1-.1-.6-1.3-.8-1.8-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3-.6.6-.9 1.3-.9 2.1.1.9.4 1.8 1 2.6 1.1 1.6 2.5 2.9 4.2 3.7.5.2.9.4 1.4.5.5.2 1 .2 1.6.1.7-.1 1.3-.6 1.7-1.2.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2 5.5 0 9.9-4.4 9.9-9.9.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"></path></svg>
+              Whatsapp
+            </a>
+            <a class="cta-btn cta-linkedin" href="https://www.linkedin.com/in/robinbenny46" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="#000000" d="M17.5,8.999a5.41868,5.41868,0,0,0-2.56543.64453A.99918.99918,0,0,0,14,8.999H10a.99943.99943,0,0,0-1,1v12a.99942.99942,0,0,0,1,1h4a.99942.99942,0,0,0,1-1v-5.5a1,1,0,1,1,2,0v5.5a.99942.99942,0,0,0,1,1h4a.99942.99942,0,0,0,1-1v-7.5A5.50685,5.50685,0,0,0,17.5,8.999Zm3.5,12H19v-4.5a3,3,0,1,0-6,0v4.5H11v-10h2v.70313a1.00048,1.00048,0,0,0,1.78125.625A3.48258,3.48258,0,0,1,21,14.499Zm-14-12H3a.99943.99943,0,0,0-1,1v12a.99942.99942,0,0,0,1,1H7a.99942.99942,0,0,0,1-1v-12A.99943.99943,0,0,0,7,8.999Zm-1,12H4v-10H6ZM5.01465,1.542A3.23283,3.23283,0,1,0,4.958,7.999h.02832a3.23341,3.23341,0,1,0,.02832-6.457ZM4.98633,5.999H4.958A1.22193,1.22193,0,0,1,3.58887,4.77051c0-.7461.55957-1.22852,1.42578-1.22852A1.2335,1.2335,0,0,1,6.41113,4.77051C6.41113,5.5166,5.85156,5.999,4.98633,5.999Z"></path></svg>
+              LinkedIn
+            </a>
+            <a class="cta-btn cta-email" href="mailto:robin.benny46@gmail.com">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="#000000" d="M14,11.51h2.42a1,1,0,0,0,.71-.29l4.58-4.58a1,1,0,0,0,0-1.42L19.29,2.8a1,1,0,0,0-1.42,0L13.29,7.38a1.05,1.05,0,0,0-.29.71v2.42A1,1,0,0,0,14,11.51Zm1-3,3.58-3.58,1,1L16,9.51H15Zm6,2a1,1,0,0,0-1,1v7a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V8.9l5.88,5.89a3,3,0,0,0,4.27,0,1,1,0,0,0,0-1.4,1,1,0,0,0-1.43,0,1,1,0,0,1-1.4,0L5.41,7.49H10a1,1,0,0,0,0-2H5a3,3,0,0,0-3,3v10a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-7A1,1,0,0,0,21,10.49Z"></path></svg>
+              Email
+            </a>
           </div>
         </div>
       </div>
@@ -237,7 +255,6 @@
           box.querySelectorAll('.unblurred').forEach(e => e.classList.add('blurred'));
         }
       });
-
       // Headshot parallax effects
       if (idx === 0) {
         headshot.style.filter = "blur(0) brightness(1)";
@@ -251,22 +268,10 @@
       }
     }
 
-    // Adjust Box 1 position to ensure full visibility
-    function adjustBox1Position() {
-      const box1 = boxes[0];
-      box1.classList.remove('shift-up');
-      const boxHeight = box1.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      if (boxHeight > viewportHeight) {
-        box1.classList.add('shift-up');
-      }
-    }
-
     function goTo(idx) {
       if (idx < 0 || idx > 2) return;
       current = idx;
       setBoxState(current);
-      if (current === 0) adjustBox1Position();
     }
 
     let scrollTimeout;
@@ -300,11 +305,6 @@
 
     // Initialize
     setBoxState(current);
-    adjustBox1Position();
-
-    window.addEventListener('resize', () => {
-      if (current === 0) adjustBox1Position();
-    });
   </script>
 </body>
 </html>
