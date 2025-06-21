@@ -5,25 +5,29 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Robin Benny – Landing Portfolio</title>
   <style>
-    /* Reset */
     * { margin:0; padding:0; box-sizing:border-box; }
-    body, html { height:100%; overflow-x:hidden; font-family:Cambria, serif; color:#000; }
+    html, body { height:100%; font-family:Cambria, serif; color:#000; overflow-x:hidden; }
 
-    /* Background & layout */
-    body {
+    /* Headshot background with parallax container */
+    .background {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
       background: url('https://raw.githubusercontent.com/robinbenny46/Robin-Benny-Landing/main/headshot_bws.png') center/cover no-repeat;
-      overflow-y: scroll;
-      perspective:1px;
-      perspective-origin:0 0;
+      z-index:-1;
+      transform: scale(1);
+      transition: transform 0.5s ease, filter 0.5s ease;
     }
+
     section {
-      position:relative;
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      transform-style:preserve-3d;
+      position:relative;
+      z-index:1;
     }
+
     .panel {
       background:rgba(255,255,255,0.5);
       padding:2rem;
@@ -31,13 +35,16 @@
       width:90%;
       border-radius:1rem;
       text-align:center;
-      transform:translateZ(0);
+      transform: scale(0.95);
       transition: transform .6s ease, filter .6s ease;
-      filter:blur(4px);
+      filter: blur(4px);
     }
-    .panel.focus { transform:scale(1.05); filter:blur(0); }
 
-    /* Text styling */
+    .panel.focus {
+      transform: scale(1.05);
+      filter: blur(0);
+    }
+
     #box1 h1 {
       font-family:'EB Garamond', serif;
       font-weight:800;
@@ -45,15 +52,16 @@
       font-size:2.5rem;
       margin-bottom:.5rem;
     }
+
     #box1 p.tag {
       font-family:Arial, sans-serif;
       color:#505050;
       font-size:1.2rem;
     }
+
     .panel h2, .panel p { font-family:Georgia, serif; color:#000; }
     .panel p.normal { font-family:Cambria, serif; color:#000; }
 
-    /* Buttons container */
     .btn-container {
       margin-top:1.5rem;
       display:flex;
@@ -61,6 +69,7 @@
       gap:1rem;
       justify-content:center;
     }
+
     .btn {
       display:flex;
       align-items:center;
@@ -72,17 +81,14 @@
       cursor:pointer;
       transition: transform .1s ease;
     }
+
     .btn:active { transform:scale(.95); }
 
-    /* CTA colors */
     .btn.uae, .btn.india { background:#4285F4; color:#fff; }
     .btn.whatsapp { background:#25D366; color:#fff; }
     .btn.linkedin { background:#0077B5; color:#fff; }
     .btn.email { background:#D93025; color:#fff; }
     .btn.download { background:#000; color:#fff; }
-
-    /* Responsive icons */
-    .btn svg { width:1em; height:1em; fill:#fff; }
 
     @media(min-width:768px){
       .btn-container { flex-wrap:nowrap; }
@@ -90,8 +96,8 @@
   </style>
 </head>
 <body>
+  <div class="background" id="bg"></div>
 
-  <!-- Box 1 (landing at bottom) -->
   <section id="box1">
     <div class="panel focus">
       <h1>Robin Benny</h1>
@@ -99,7 +105,6 @@
     </div>
   </section>
 
-  <!-- Box 2 -->
   <section id="box2">
     <div class="panel">
       <h2>About Me</h2>
@@ -110,51 +115,46 @@
     </div>
   </section>
 
-  <!-- Box 3 -->
   <section id="box3">
     <div class="panel">
       <h2>Get In Touch</h2>
       <div class="btn-container">
-        <button class="btn uae" onclick="location.href='tel:+971564249461'">
-          <!-- phone svg -->📞 Mobile [UAE]
-        </button>
-        <button class="btn india" onclick="location.href='tel:+97156424946'">
-          📞 Mobile [India]
-        </button>
-        <button class="btn whatsapp" onclick="location.href='https://wa.me/919072376246'">
-          <!-- whatsapp svg -->🟢 WhatsApp
-        </button>
-        <button class="btn linkedin" onclick="location.href='https://www.linkedin.com/in/robinbenny46'">
-          <!-- linkedin svg -->🔗 LinkedIn
-        </button>
-        <button class="btn email" onclick="location.href='mailto:robin.benny46@gmail.com'">
-          <!-- mail svg -->✉️ Email
-        </button>
-        <button class="btn download" onclick="alert('Download link to be updated')">
-          <!-- download svg -->⬇️ Download CV
-        </button>
+        <button class="btn uae" onclick="location.href='tel:+971564249461'">📞 Mobile [UAE]</button>
+        <button class="btn india" onclick="location.href='tel:+97156424946'">📞 Mobile [India]</button>
+        <button class="btn whatsapp" onclick="location.href='https://wa.me/919072376246'">🟢 WhatsApp</button>
+        <button class="btn linkedin" onclick="location.href='https://www.linkedin.com/in/robinbenny46'">🔗 LinkedIn</button>
+        <button class="btn email" onclick="location.href='mailto:robin.benny46@gmail.com'">✉️ Email</button>
+        <button class="btn download" onclick="alert('Download link to be updated')">⬇️ Download CV</button>
       </div>
     </div>
   </section>
 
   <script>
     const panels = [ 'box1', 'box2', 'box3' ].map(id => document.getElementById(id));
-    const panelEls = panels.map(sec => sec.querySelector('.panel'));
+    const panelEls = panels.map(p => p.querySelector('.panel'));
+    const bg = document.getElementById('bg');
 
-    function onScroll(){
+    function onScroll() {
       const vh = window.innerHeight;
+      const scrollY = window.scrollY;
+
       panels.forEach((sec, i) => {
         const rect = sec.getBoundingClientRect();
-        const pan = panelEls[i];
-        if(rect.top < vh*0.5 && rect.bottom > vh*0.5){
-          pan.classList.add('focus');
-        } else {
-          pan.classList.remove('focus');
-        }
+        const panel = panelEls[i];
+        const inFocus = rect.top < vh / 2 && rect.bottom > vh / 2;
+        panel.classList.toggle('focus', inFocus);
       });
-      // parallax background movement
-      document.body.style.backgroundPositionY = `${window.scrollY * -0.2}px`;
+
+      // Adjust background based on scrollY
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollY / maxScroll, 1);
+      const scale = 1 + progress * 0.2;
+      const blur = progress * 5;
+
+      bg.style.transform = `scale(${scale}) translateY(${scrollY * -0.2}px)`;
+      bg.style.filter = `blur(${blur}px)`;
     }
+
     window.addEventListener('scroll', onScroll);
     onScroll();
   </script>
